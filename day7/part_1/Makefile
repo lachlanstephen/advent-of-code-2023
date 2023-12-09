@@ -6,7 +6,7 @@
 #    By: darkwater <marvin@42.fr>                   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/03 15:56:05 by darkwater         #+#    #+#              #
-#    Updated: 2023/12/07 17:43:25 by darkwater        ###   ########.fr        #
+#    Updated: 2023/12/09 18:33:10 by darkwater        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ NAME			= camel-cards
 SRC				= main.c			\
 				  file_parsing.c	\
 				  print_num.c		\
-				  calcs.c			\
+				  ft_utils.c		\
+				  card_calcs.c		\
+				  hand_comparison.c	\
 
 SRCPRE			= $(addprefix $(PREFIX), $(SRC))
 
@@ -27,7 +29,7 @@ HEADER			= ./includes/
 
 CC				= cc
 
-CFLAGS			= -Wall -Wextra -Werror -Wpedantic
+CFLAGS			= -g -Wall -Wextra -Werror -Wpedantic
 
 all: $(NAME)
 

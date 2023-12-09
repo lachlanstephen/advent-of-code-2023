@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_num.c                                        :+:      :+:    :+:   */
+/*   hand_comparison.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: darkwater <marvin@42.fr>                   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/03 16:07:19 by darkwater         #+#    #+#             */
-/*   Updated: 2023/12/09 15:22:54 by darkwater        ###   ########.fr       */
+/*   Created: 2023/12/09 18:32:21 by darkwater         #+#    #+#             */
+/*   Updated: 2023/12/09 18:57:07 by darkwater        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "camel_cards.h"
 
-void	ft_putchar(char c)
+void	ft_compare_hands(t_hands *hand, int lines)
 {
-	write(1, &c, 1);
-}
+	int		count;
+	int		multiplier;
+	int		type;
+	long	score;
 
-void	ft_print_num(int result)
-{
-	if (result >= 10)
-		ft_print_num(result / 10);
-	ft_putchar(result % 10 + '0');
+	score = 0;
+	multiplier = lines;
+	type = 6;
+	while (multiplier >= 1)
+	{
+		count = 0;
+		while (count < lines)
+		{
+			if (hand[count].type == type)
+			{
+				score += hand[count].bid * multiplier;
+				multiplier--;
+			}
+			count++;
+		}
+		type--;
+	}
+	printf("The final amount: %lu\n", score);
 }
