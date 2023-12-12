@@ -6,7 +6,7 @@
 /*   By: lstephen <lstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:18:18 by lstephen          #+#    #+#             */
-/*   Updated: 2023/12/11 17:19:22 by lstephen         ###   ########.fr       */
+/*   Updated: 2023/12/11 18:19:00 by lstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,14 @@ char	**galaxy_expansion(char init_gal[140][142])
 
 	i = 0;
 	count = ft_count_space(init_gal);
+	exp_gal = malloc(sizeof(char *) * count[0]);
+	if (exp_gal == NULL)
+		ft_prn_error(2);
+	while (i < count[0])
+		exp_gal[i] = malloc(sizeof(char) * count[1]);
+		if (exp_gal[i] == NULL)
+			ft_prn_error(2);
+
 
 	while (i < 140)
 	{
