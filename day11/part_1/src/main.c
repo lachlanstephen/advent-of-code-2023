@@ -6,11 +6,22 @@
 /*   By: lstephen <lstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 15:59:20 by lstephen          #+#    #+#             */
-/*   Updated: 2023/12/11 16:14:50 by lstephen         ###   ########.fr       */
+/*   Updated: 2023/12/13 02:41:11 by darkwater        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cosmic_expansion.h"
+
+void	ft_free_error(char **gal, int i)
+{
+	int	j;
+
+	j = -1;
+	while (++j < i)
+		free(gal[j]);
+	free(gal);
+	ft_prn_error(2);
+}
 
 void	ft_prn_error(int num)
 {
@@ -28,13 +39,12 @@ void	ft_prn_error(int num)
 int	main(int argc, char *argv[])
 {
 	int		fd;
-	char	init_gal[140][142];
 
 	if (argc != 2)
 		ft_prn_error(0);
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1 || (read(fd, NULL, 0) == -1))
 		ft_prn_error(1);
-	parse_values(fd, init_gal);
+	parse_values(fd);
 	return (0);
 }

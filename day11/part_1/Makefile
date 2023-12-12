@@ -6,14 +6,16 @@
 #    By: lstephen <lstephen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/11 15:47:21 by lstephen          #+#    #+#              #
-#    Updated: 2023/12/11 18:17:32 by lstephen         ###   ########.fr        #
+#    Updated: 2023/12/13 05:30:15 by darkwater        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= cosmic-expansion
 
-SRC				= main.c		\
-				file_parsing.c	\
+SRC				= main.c				\
+				file_parsing.c			\
+				cosmic_expansion.c		\
+				galaxy_calculations.c	\
 
 SRCPRE			= $(addprefix $(SRCDIR), $(SRC))
 
@@ -27,7 +29,7 @@ HEADER			= ./includes/
 
 CC				= cc
 
-CFLAGS			= -Wall -Wextra -Werror -Wpedantic
+CFLAGS			= -g -Wall -Wextra -Werror -Wpedantic
 
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ Colours  ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ #
 
@@ -60,7 +62,7 @@ $(OBJ_OUTPUT):
 	@touch $(OBJ_OUTPUT)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c -I $(HEADER) $< -o $@
+	$(CC) $(CFLAGS) -c $(ROW_AMOUNT) $(ROW_WIDTH) -I $(HEADER) $< -o $@
 
 clean:
 	@$(CLEAN_MSG)
