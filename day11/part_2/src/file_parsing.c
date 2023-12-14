@@ -6,12 +6,12 @@
 /*   By: lstephen <lstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:07:52 by lstephen          #+#    #+#             */
-/*   Updated: 2023/12/13 05:52:42 by darkwater        ###   ########.fr       */
+/*   Updated: 2023/12/13 06:11:10 by darkwater        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cosmic_expansion.h"
-
+/*
 static void	ft_arg_printing(char **init_gal, char **exp_gal, int *count)
 {
 	int	y;
@@ -27,6 +27,7 @@ static void	ft_arg_printing(char **init_gal, char **exp_gal, int *count)
 	while (++y < count[0])
 		printf("%s", exp_gal[y]);
 }
+*/
 
 void	parse_values(int fd)
 {
@@ -49,7 +50,7 @@ void	parse_values(int fd)
 	while (read(fd, init_gal[++i], ROW_WIDTH) != 0)
 		init_gal[i][ROW_WIDTH] = '\0';
 	expanded_gal = galaxy_expansion(init_gal, count);
-	ft_arg_printing(init_gal, expanded_gal, count);
+	//ft_arg_printing(init_gal, expanded_gal, count);
 	ft_free_error(init_gal, ROW_AMOUNT, false);
 	total_gal_distance(expanded_gal, count);
 }
