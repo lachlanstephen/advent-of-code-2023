@@ -6,7 +6,7 @@
 /*   By: lstephen <lstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:07:52 by lstephen          #+#    #+#             */
-/*   Updated: 2023/12/13 05:21:17 by darkwater        ###   ########.fr       */
+/*   Updated: 2023/12/14 23:51:25 by lstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ static void	ft_arg_printing(char **init_gal, char **exp_gal, int *count)
 	printf("Old row amount: %d, Old column amount: %d\n\nOld Galaxy:\n",
 		ROW_AMOUNT, ROW_WIDTH);
 	while (++y < ROW_AMOUNT)
-		printf("%s", init_gal[y]);
+		printf("%s\n", init_gal[y]);
 	y = -1;
 	printf("\nNew row amount: %d, New column amount: %d\n\nNew Galaxy:\n",
 		count[0], count[1]);
 	while (++y < count[0])
-		printf("%s", exp_gal[y]);
+		printf("%s\n", exp_gal[y]);
 }
 
 void	parse_values(int fd)
@@ -41,13 +41,13 @@ void	parse_values(int fd)
 		ft_prn_error(2);
 	while (++i < ROW_AMOUNT)
 	{
-		init_gal[i] = malloc(sizeof(char) * (ROW_WIDTH + 1));
+		init_gal[i] = malloc(sizeof(char) * (ROW_WIDTH));
 		if (init_gal[i] == NULL)
 			ft_free_error(init_gal, i);
 	}
 	i = -1;
 	while (read(fd, init_gal[++i], ROW_WIDTH) != 0)
-		init_gal[i][ROW_WIDTH] = '\0';
+		init_gal[i][ROW_WIDTH - 1] = '\0';
 	expanded_gal = galaxy_expansion(init_gal, count);
 	ft_arg_printing(init_gal, expanded_gal, count);
 	total_gal_distance(expanded_gal, count);

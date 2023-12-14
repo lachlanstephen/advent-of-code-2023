@@ -6,7 +6,7 @@
 /*   By: lstephen <lstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:18:18 by lstephen          #+#    #+#             */
-/*   Updated: 2023/12/13 05:20:27 by darkwater        ###   ########.fr       */
+/*   Updated: 2023/12/14 23:51:00 by lstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	ft_count_col_space(char **init_gal, int *count)
 		gal_exist = false;
 		while (i < ROW_AMOUNT)
 		{
-			if (init_gal[i][j] == '#' || init_gal[i][j] == '\n')
+			if (init_gal[i][j] == '#')
 			{
 				gal_exist = true;
 				break ;
@@ -93,8 +93,7 @@ static void	populate_gal(char **init_gal, char **exp_gal, int *count)
 			gal_exists_col = false;
 			while (++iters[0] < ROW_AMOUNT)
 			{
-				if (init_gal[(iters[0])][(iters[2])] == '#'
-					|| init_gal[(iters[0])][(iters[2])] == '\n')
+				if (init_gal[(iters[0])][(iters[2])] == '#')
 				{
 					gal_exists_col = true;
 					break ;
@@ -113,8 +112,7 @@ static void	populate_gal(char **init_gal, char **exp_gal, int *count)
 			iters[4] = -1;
 			while (++iters[4] < count[1] - 1)
 				exp_gal[(iters[3])][(iters[4])] = '.';
-			exp_gal[(iters[3])][(iters[4])++] = '\n';
-			exp_gal[(iters[3])][(iters[4])] = '\0';
+			exp_gal[(iters[3])][(++iters[4])] = '\0';
 		}
 	}
 }
