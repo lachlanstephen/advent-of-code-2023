@@ -6,7 +6,7 @@
 /*   By: lstephen <lstephen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 16:18:18 by lstephen          #+#    #+#             */
-/*   Updated: 2023/12/14 23:51:00 by lstephen         ###   ########.fr       */
+/*   Updated: 2023/12/14 23:54:34 by lstephen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ static void	populate_gal(char **init_gal, char **exp_gal, int *count)
 		{
 			iters[3]++;
 			iters[4] = -1;
-			while (++iters[4] < count[1] - 1)
+			while (++iters[4] < count[1])
 				exp_gal[(iters[3])][(iters[4])] = '.';
 			exp_gal[(iters[3])][(++iters[4])] = '\0';
 		}
